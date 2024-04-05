@@ -1,13 +1,14 @@
-html, body {
+html,
+body {
 	font-family: "Inter", sans-serif;
-    margin: 0;
+	margin: 0;
 }
 
 header {
 	border: 1px solid red;
 	height: 152px;
 	background-color: #ff3b3c;
-    padding-top: 2rem;
+	padding-top: 2rem;
 }
 
 header img {
@@ -91,7 +92,7 @@ header img {
 
 #hero {
 	height: 340px;
-	background-image: url(assets/hero_bg.png);
+	background-image: url(../assets/hero_bg.png);
 	background-size: cover;
 	background-position: top center;
 }
@@ -118,6 +119,7 @@ header img {
 }
 
 main {
+	padding: 50px;
 	height: auto;
 }
 
@@ -132,14 +134,16 @@ main {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 20px;
-    padding: 2rem;
+	padding: 5rem 3rem;
 }
 
 .product-card {
 	background-color: #f0f0f0;
 	border-radius: 14px;
 	width: auto;
-    overflow: hidden;
+	overflow: hidden;
+	text-decoration: none;
+	color: black;
 }
 
 .product-info {
@@ -194,7 +198,49 @@ main {
 }
 
 footer {
+	border: 1px solid #009145;
 	min-height: 368px;
+	background-color: #7525a7;
+}
+
+footer .container {
+	display: flex;
+	flex-direction: column;
+}
+
+.columns-container {
+	flex: 1;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.columns-container .col ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.columns-container .col ul li {
+	padding: 5px 0;
+}
+
+.columns-container .col ul li.col-main-item {
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.columns-container .col ul li a {
+	color: white;
+	text-decoration: none;
+}
+
+.copyright {
+	border-top: 1px solid #ba53fb;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	padding: 30px 0;
+	box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -205,11 +251,13 @@ footer {
 		width: 100%;
 	}
 
-    .search .form input{
-        width: 300px;
-    }
+	.search .form input {
+		width: 300px;
+	}
 
-    .container{width: 100%;}
+	.container {
+		width: 100%;
+	}
 }
 
 @media (max-width: 425px) {
@@ -217,20 +265,20 @@ footer {
 		grid-template-columns: repeat(1, 1fr);
 	}
 
-    .search .form input{
-        width: 100px;
-    }
+	.search .form input {
+		width: 100px;
+	}
 
-    .title-container span:first-child {
-        font-size: 30px;
-    }
-    
-    .title-container span:last-child {
-        font-size: 80px;
-        line-height: 80px;
-    }
+	.title-container span:first-child {
+		font-size: 30px;
+	}
 
-    .container{width: 100%;}
+	.title-container span:last-child {
+		font-size: 70px;
+		line-height: 80px;
+	}
 
-    
+	.container {
+		width: 100%;
+	}
 }
