@@ -198,17 +198,16 @@ main {
 }
 
 footer {
-	border: 1px solid #009145;
-	min-height: 368px;
 	background-color: #7525a7;
 }
 
 footer .container {
+	width: 1000px;
 	display: flex;
 	flex-direction: column;
 }
 
-.columns-container {
+footer .columns-container {
 	flex: 1;
 	display: flex;
 	justify-content: space-evenly;
@@ -247,16 +246,13 @@ footer .container {
 	.product-container {
 		grid-template-columns: repeat(2, 1fr);
 	}
-	.container {
-		width: 100%;
-	}
 
 	.search .form input {
 		width: 300px;
 	}
 
-	.container {
-		width: 100%;
+	footer .container {
+		width: 500px;
 	}
 }
 

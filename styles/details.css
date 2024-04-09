@@ -102,6 +102,13 @@ main {
 	height: auto;
 }
 
+main .columns-container {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	padding: 0 50px;
+}
+
 .product-images-block,
 .product-description-block,
 .product-checkout-block {
@@ -134,7 +141,7 @@ main {
 	grid-column: 2 / 5;
 }
 
-.product-description-block .title {
+.product-description-block .titulo {
 	color: #333;
 	font-size: 24px;
 	font-weight: bold;
@@ -234,60 +241,111 @@ main {
 	border-radius: 10px;
 }
 
-.checkout-total-label footer {
-	border: 1px solid #009145;
-	min-height: 368px;
+.sales-block {
+	margin-top: 50px;
+	padding: 50px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 100px 1fr;
+	gap: 25px;
+}
+
+.sales-block a {
+	text-decoration: none;
+	color: initial;
+}
+
+.sales-block h2 {
+	grid-row: 1;
+	grid-column: 1 / -1;
+	justify-self: center;
+	text-align: center;
+	font-size: 40px;
+}
+
+.product-card {
+	background-color: #f0f0f0;
+	border-radius: 14px;
+	width: auto;
+	overflow: hidden;
+	text-decoration: none;
+	color: black;
+}
+
+.product-info {
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.product-title {
+	font-size: 24px;
+	font-weight: bold;
+	word-wrap: break-word;
+	display: block;
+	line-height: 22px;
+}
+
+.product-description {
+	font-size: 10px;
+	font-weight: 300;
+	margin-bottom: 6px;
+}
+
+.product-tax-policy {
+	font-size: small;
+	font-weight: lighter;
+	padding: 0 0 20px 20px;
+}
+
+.product-price-block .price {
+	font-size: 22px;
+	font-weight: 700;
+	flex: 1;
+}
+
+.product-price-block .discount {
+	font-size: 12px;
+	font-weight: 700;
+	color: #428f13;
+}
+
+.product-img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.product-price-block {
+	display: flex;
+	margin: 0 20px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.product-img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	object-position: center;
+}
+
+footer {
 	background-color: #7525a7;
 }
 
 footer .container {
+	width: 1000px;
 	display: flex;
 	flex-direction: column;
 }
 
-.columns-container {
+footer .columns-container {
 	flex: 1;
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 	gap: 20px;
-}
-
-.columns-container .col ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-.columns-container .col ul li {
-	padding: 5px 0;
-}
-
-.columns-container .col ul li.col-main-item {
-	font-weight: bold;
-	padding-bottom: 20px;
-}
-
-.columns-container .col ul li a {
-	color: white;
-	text-decoration: none;
-}
-
-footer {
-	border: 1px solid #009145;
-	min-height: 368px;
-	background-color: #7525a7;
-}
-
-footer .container {
-	display: flex;
-	flex-direction: column;
-}
-
-.columns-container {
-	flex: 1;
-	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
 }
 
 .columns-container .col ul {
@@ -319,41 +377,69 @@ footer .container {
 }
 
 @media (max-width: 768px) {
-	.product-container {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.container {
-		width: 100%;
-	}
-
 	.search .form input {
 		width: 300px;
 	}
 
-	.container {
-		width: 100%;
+	.product-images-block {
+		grid-template-rows: 20px 1fr;
+	}
+
+	.product-checkout-block,
+	.product-description-block {
+		flex: none;
+		max-width: 100%;
+	}
+
+	.sales-block {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.sales-block h2 {
+		font-size: 20px;
+	}
+
+	footer .container {
+		width: 500px;
 	}
 }
 
 @media (max-width: 425px) {
-	.product-container {
-		grid-template-columns: repeat(1, 1fr);
+	.search .logo img {
+		width: 150px;
 	}
 
 	.search .form input {
 		width: 100px;
 	}
 
-	.title-container span:first-child {
-		font-size: 30px;
+	.product-description-block .titulo {
+		margin-top: 10px;
+		font-size: 1rem;
 	}
 
-	.title-container span:last-child {
-		font-size: 70px;
-		line-height: 80px;
+	.product-description-block .selector fieldset,
+	.product-description-block .selector fieldset select,
+	.product-description-block .description p,
+	.checkout-container {
+		font-size: 12px;
 	}
 
-	.container {
+	.product-description-block .description h1 {
+		font-size: 1rem;
+	}
+
+	.sales-block {
+		grid-template-columns: 1fr;
+		gap: 25px;
+		padding: 0;
+	}
+
+	.sales-block h2 {
+		font-size: 20px;
+	}
+
+	footer .container {
 		width: 100%;
 	}
 }
