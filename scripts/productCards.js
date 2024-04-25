@@ -1,5 +1,3 @@
-import { products } from "./products.js";
-
 function createCard(product) {
 	return `
        <a class="product-card" href="./details.html?id=${product.id}">
@@ -22,14 +20,12 @@ function createCard(product) {
         </a>
     `;
 }
-
-export function printCards(arrayOfProducts, idSelector) {
+function printCards(arrayOfProducts, idSelector) {
 	let productsTemplate = "";
 	for (const element of arrayOfProducts) {
 		productsTemplate += createCard(element);
 	}
 	const productsSelector = document.getElementById(idSelector);
-	console.log(productsSelector);
 	productsSelector.innerHTML = productsTemplate;
 }
 
@@ -43,6 +39,6 @@ if (location.pathname == "/details.html") {
 			.slice(0, 3),
 		"product-container"
 	);
-} else if (location.pathname == "/index.html") {
+} else if (["/index.html", "/"].includes(location.pathname)) {
 	printCards(products, "products");
 }

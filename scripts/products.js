@@ -9,6 +9,10 @@ class Product {
 		this.images = images;
 		this.onsale = onsale;
 	}
+
+	sell(x){
+		this.stock -= x
+	}
 }
 
 const prod1 = new Product(
@@ -32,7 +36,8 @@ const prod2 = new Product(
 	5,
 	[
 		"https://novoxperu.com/cdn/shop/files/2-20240126_174357_0001_05274251-63a0-4f01-801e-7d443812e607.png?v=1709106178",
-		"https://images.samsung.com/is/image/samsung/p6pim/ph/feature/164987423/ph-feature-galaxy-s24--539781824?$FB_TYPE_A_MO_JPG$",
+		"https://images.samsung.com/is/image/samsung/p6pim/co/translationfeature/164974378/co-featureunit-big--bigger-and-faster-539772150?$FB_TYPE_C_JPG$",
+		"https://images.samsung.com/is/image/samsung/p6pim/ph/feature/164987423/ph-feature-galaxy-s24--539781824?$FB_TYPE_A_MO_JPG$"
 	],
 	"50% Off"
 );
@@ -91,4 +96,4 @@ const prod6 = new Product(
 	"50% Off"
 );
 
-export const products = [prod1, prod2, prod3, prod4, prod5, prod6];
+const products = [prod1, prod2, prod3, prod4, prod5, prod6];

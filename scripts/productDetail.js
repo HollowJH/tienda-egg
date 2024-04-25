@@ -1,26 +1,36 @@
-import { products } from "./products.js";
+function changeMini(event) {
+    const clicked = event.target.src;
+    const main = document.querySelector(".big-img")
+
+    event.target.src = main.src
+    main.src = clicked
+}
+
+function changeSubtotal(event) {
+    document.getElementById("price").textContent = "$" + producto.price * event.target.value
+}
 
 const query = location.search;
 const params = new URLSearchParams(query);
-const id = params.get("id");
-printDetails(id);
+const id = params.get("id") ?? "Galaxy S24 Plus";
+const producto = products.find((elem) => elem.id == id)
+printDetails(producto);
 
-function printDetails(id) {
-    const producto = products.find((elem) => elem.id == id)
-    console.log(id);
+function printDetails(producto) {
     document.getElementById("details").innerHTML = ` <section class="product-images-block">
         <div class="product-images">
-        ${producto.images.length == 1 ? "" : producto.images.map(e => `<img
+        ${producto.images.length == 1 ? "" : producto.images.map((e,i,arr) => i== arr.length - 1 ? "" : `<img
             class="mini-img"
             src=${e}
-            alt="${id.id}"
+            alt="${producto.id}"
+            onclick="changeMini(event)"
         />`).join("")}
         </div>
         <img
               class="big-img"
               id="big-img"
               src="${producto.images[producto.images.length - 1]}
-              alt="${id.id}"
+              alt="${producto.id}"
             />
     </section>
     <div class="product-description-block">
@@ -75,7 +85,7 @@ function printDetails(id) {
         </ul>
         <div class="checkout-process">
         <div class="top">
-            <input type="number" min="1" value="1" />
+            <input type="number" min="1" value="1" onchange="changeSubtotal(event)" />
             <button type="button" class="cart-btn">
             Añadir al Carrito
             </button>
