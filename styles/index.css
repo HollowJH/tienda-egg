@@ -2,7 +2,7 @@
 .product-container {
   width: 1080px;
   display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
 }
 

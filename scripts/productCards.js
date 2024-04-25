@@ -2,7 +2,7 @@ import { products } from "./products.js";
 
 function createCard(product) {
 	return `
-       <a class="product-card" href="./details.html">
+       <a class="product-card" href="./details.html?id=${product.id}">
           <img
             class="product-img"
             src="${product.images[0]}"
@@ -29,7 +29,20 @@ export function printCards(arrayOfProducts, idSelector) {
 		productsTemplate += createCard(element);
 	}
 	const productsSelector = document.getElementById(idSelector);
+	console.log(productsSelector);
 	productsSelector.innerHTML = productsTemplate;
 }
 
-printCards(products, "products");
+// Verifica la pagina cargada, si es index muestra todos los productos, si es details muestra los 3 primeros excluyendo el que se esta viendo en ofertas de la semana
+if (location.pathname == "/details.html") {
+	printCards(
+		products
+			.filter(
+				(e) => e.id != new URLSearchParams(location.search).get("id")
+			)
+			.slice(0, 3),
+		"product-container"
+	);
+} else if (location.pathname == "/index.html") {
+	printCards(products, "products");
+}
