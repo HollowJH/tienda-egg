@@ -7,17 +7,14 @@ function changeMini(event) {
 }
 
 function changeSubtotal(event) {
-    let priceSection = location.pathname == "/cart.html" ? event.target.parentElement.parentElement.getElementsByClassName("product-price")[0] : document.getElementById("price")
-    priceSection.textContent = "$" + producto.price * event.target.value
-    if(location.pathname == "/cart.html"){
-        changeUnits(event)}
+    document.getElementById("price").textContent = "$" + producto.price * event.target.value
 }
 
 const query = location.search;
 const params = new URLSearchParams(query);
 const id = params.get("id") ?? "Galaxy S24 Plus";
 const producto = products.find((elem) => elem.id == id)
-if(location.pathname == "/details.html"){printDetails(producto);}
+printDetails(producto);
 
 function printDetails(producto) {
     document.getElementById("details").innerHTML = ` <section class="product-images-block">
