@@ -7,14 +7,17 @@ function changeMini(event) {
 }
 
 function changeSubtotal(event) {
-    document.getElementById("price").textContent = "$" + producto.price * event.target.value
+    let priceSection = location.pathname == "/cart.html" ? event.target.parentElement.parentElement.getElementsByClassName("product-price")[0] : document.getElementById("price")
+    priceSection.textContent = "$" + producto.price * event.target.value
+    if(location.pathname == "/cart.html"){
+        changeUnits(event)}
 }
 
 const query = location.search;
 const params = new URLSearchParams(query);
 const id = params.get("id") ?? "Galaxy S24 Plus";
 const producto = products.find((elem) => elem.id == id)
-printDetails(producto);
+if(location.pathname == "/details.html"){printDetails(producto);}
 
 function printDetails(producto) {
     document.getElementById("details").innerHTML = ` <section class="product-images-block">
@@ -29,7 +32,7 @@ function printDetails(producto) {
         <img
               class="big-img"
               id="big-img"
-              src="${producto.images[producto.images.length - 1]}
+              src="${producto.images[producto.images.length - 1]}"
               alt="${producto.id}"
             />
     </section>
