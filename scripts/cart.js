@@ -18,11 +18,13 @@ function updateCart(event) {
 
 function printTotal(productsInCart) {
 	let total = 0;
-	productsInCart.forEach((element) => {
-		total +=
-			element.price *
-			Number(JSON.parse(localStorage.getItem("cart"))[element.id][1]);
-	});
+  if (productsInCart) {
+    productsInCart.forEach((element) => {
+      total +=
+        element.price *
+        Number(JSON.parse(localStorage.getItem("cart"))[element.id][1]);
+    });
+  }
 	document.getElementById("total").innerHTML = `
   <div class="cart-data">
     <h4 class="cart-title"><span>Resumen</span> <span>del</span> <span>pedido</span></h4>
@@ -38,6 +40,9 @@ function printTotal(productsInCart) {
 }
 
 let cart = JSON.parse(localStorage.getItem("cart"));
-var productsInCart = Object.keys(cart).map((e) => JSON.parse(cart[e][0]));
+let productsInCart = cart ? Object.keys(cart).map((e) => JSON.parse(cart[e][0])) : [];
 printCards(productsInCart, "cartproducts");
 printTotal(productsInCart);
+
+const numbers = document.querySelectorAll("input[type='number']")
+numbers.forEach((e) => e.addEventListener("change", (e) => {updateCart(e)}))

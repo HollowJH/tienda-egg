@@ -10,9 +10,9 @@ function createCard(product) {
           </a>
           <div class="product-info">
             <span class="product-title">${product.title}</span>
-            <span class="product-description">${product.colors[0]}</span>
+            <span class="product-description">${product.chosenColor ?? product.colors[0]}</span>
             ${location.pathname == "/cart.html" ? `<span class="product-description">${product.description}</span> 
-            <input type="number" min="1" value="${JSON.parse(localStorage.getItem("cart"))[product.id][1]}" onchange="updateCart(event)" class="product-input">
+            <input type="number" min="1" value="${JSON.parse(localStorage.getItem("cart"))[product.id][1]}" class="product-input">
           </div>
           <div class="product-price" id="price">$${product.price * JSON.parse(localStorage.getItem("cart"))[product.id][1]}</div>` : `<div class="product-price-block">
               <span class="product-price">${product.price}</span>
