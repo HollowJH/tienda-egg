@@ -11,7 +11,7 @@ function createCard(product) {
           <div class="product-info">
             <span class="product-title">${product.title}</span>
             <span class="product-description">${product.chosenColor ?? product.colors[0]}</span>
-            ${location.pathname == "/cart.html" ? `<span class="product-description">${product.description}</span> 
+            ${paginaCargada == "cart.html" ? `<span class="product-description">${product.description}</span> 
             <input type="number" min="1" value="${JSON.parse(localStorage.getItem("cart"))[product.id][1]}" class="product-input">
           </div>
           <div class="product-price" id="price">$${product.price * JSON.parse(localStorage.getItem("cart"))[product.id][1]}</div>` : `<div class="product-price-block">
@@ -34,7 +34,9 @@ function printCards(arrayOfProducts, idSelector) {
 }
 
 // Verifica la pagina cargada
-if (location.pathname == "/details.html") { //si la pagina es una pagina de producto solo muestra los primeros 3 (excluyendo el principal mostrado)
+let paginaCargada = location.pathname.split("/")
+paginaCargada = paginaCargada[paginaCargada.length - 1]
+if (paginaCargada == "details.html") { //si la pagina es una pagina de producto solo muestra los primeros 3 (excluyendo el principal mostrado)
 	printCards(
 		products
 			.filter(
@@ -43,6 +45,6 @@ if (location.pathname == "/details.html") { //si la pagina es una pagina de prod
 			.slice(0, 3),
 		"product-container"
 	);
-} else if (["/index.html", "/"].includes(location.pathname)) { // si es la pagina principal muestra todos los productos
+} else if (["index.html", ""].includes(paginaCargada)) { // si es la pagina principal muestra todos los productos
 	printCards(products, "products");
 }
