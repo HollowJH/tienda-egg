@@ -3,14 +3,14 @@ function changeUnits(event) {
 	const changedItem =
 		event.target.parentElement.parentElement.getElementsByClassName(
 			"product-title"
-		)[0].textContent;
+		)[0].textContent.trim();
 	cart[changedItem] = [cart[changedItem][0], event.target.value];
 	localStorage.setItem("cart", JSON.stringify(cart));
 	printTotal(productsInCart);
 }
 
 function updateCart(event) {
-    let item = JSON.parse(cart[event.target.parentElement.getElementsByClassName("product-title")[0].textContent][0])
+    let item = JSON.parse(cart[event.target.parentElement.getElementsByClassName("product-title")[0].textContent.trim()][0])
     let priceSection = event.target.parentElement.parentElement.getElementsByClassName("product-price")[0]
     priceSection.textContent = "$" + item.price * event.target.value
     changeUnits(event)

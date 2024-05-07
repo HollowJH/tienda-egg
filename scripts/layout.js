@@ -52,7 +52,7 @@ for (let option of options) {
 		const link = document.createElement("a");
 		link.className = "footer-a";
 		link.textContent = element;
-		link.href = "#";
+		link.href = element == "Lista de deseos" ? "./favourites.html" : "#";
 		item.appendChild(link);
 		ulist.appendChild(item);
 	}

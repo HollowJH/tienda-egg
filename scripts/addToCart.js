@@ -8,4 +8,5 @@ addToCart.addEventListener("click", () => {
     added[producto.title] = [JSON.stringify(producto), document.querySelector("input[type='number']").value] 
     const currentCart = JSON.parse(localStorage.getItem("cart")) ?? {}
     localStorage.setItem("cart", JSON.stringify({...currentCart, ...added}));
+    console.log(JSON.parse(localStorage.getItem("cart")))
 })

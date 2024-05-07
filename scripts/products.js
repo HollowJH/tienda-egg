@@ -8,6 +8,15 @@ class Product {
 		this.units = units;
 		this.images = images;
 		this.onsale = onsale;
+		this.isFavourite;
+	}
+
+	set toggleFavourite(fav) {
+		this.isFavourite = fav
+	}
+
+	get getFavourite(){
+		return this.isFavourite
 	}
 }
 
