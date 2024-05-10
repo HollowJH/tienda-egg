@@ -22,12 +22,10 @@ function toggleFavorito(title, favoritos, heart) {
 			JSON.stringify({ ...favoritos, ...toggled })
 		);
 		heart.style.fill = "#ff3535";
-		heart.classList.toggle("favourite");
 	} else {
 		delete favoritos[nombreProducto];
 		localStorage.setItem("favoritos", JSON.stringify(favoritos));
 		heart.style.fill = "none";
-		heart.classList.toggle("favourite");
 	}
 	producto.toggleFavourite = !producto.isFavourite;
 }

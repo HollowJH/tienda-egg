@@ -67,6 +67,14 @@ header {
   padding: 10px;
 }
 
+.hide{
+  display: none;
+}
+
+svg{
+  cursor: pointer;
+}
+
 /* NAVBAR */
 nav {
   width: 1080px;
