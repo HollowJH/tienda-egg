@@ -10,7 +10,6 @@
   height: 220px;
   word-wrap: break-word;
   display: flex;
-  justify-content: space-between;
 }
 
 /* CART CARD */

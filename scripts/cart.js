@@ -1,3 +1,5 @@
+import { printCards } from "./functions/printCards.js";
+
 function changeUnits(event) {
 	const cart = JSON.parse(localStorage.getItem("cart"));
 	const changedItem =
