@@ -1,0 +1,22 @@
+{"options" : [{
+	"title": "Ofertas",
+	"linkTo": "./outlet.html",
+	"opt": ["Laptops", "Audio", "Auticulares"]
+},
+{
+	"title": "Como comprar",
+	"linkTo": "./how.html",
+	"opt": ["Formas de pago", "Envios", "Devoluciones"]
+},
+{
+	"title": "Costos y tarifas",
+	"linkTo": "./taxs.html",
+	"opt": ["Impuestos", "Facturacion"]
+},
+{
+	"title": "Mis pedidos",
+	"linkTo": "./orders.html",
+	"opt": ["Pedir nuevamente", "Lista de deseos"]
+},
+{ "title": "Garantia", "linkTo": "./warranty.html", "opt": [""] }]
+}

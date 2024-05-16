@@ -1,9 +1,10 @@
+import { fetchProduct } from "../products.js";
 import { favouriteCheck } from "./favouriteCheck.js";
 
-export function toggleFavorite(title, favoritos, heart) {
-    console.log(title);
+export async function toggleFavorite(title, favoritos, heart) {
 	heart.classList.toggle("favourite");
-	const producto = products.find((elem) => elem.id == title);
+	const products = await fetchProduct()
+	const producto = await products.find((elem) => elem.id == title);
 	const toggled = {};
 	toggled[title] = JSON.stringify(producto); //guarda el articulo en un objeto para despues añadirlo a LocalStorage
 	let isFavourite = favouriteCheck(title);
