@@ -213,3 +213,11 @@ footer {
   padding: 30px 0;
   box-sizing: border-box;
 }
+
+.swal2-toast.swal2-icon-warning{
+  background-color: #fc8f8f !important;
+}
+
+.swal2-toast.swal2-icon-success{
+  background-color: #96ffb5 !important;
+}

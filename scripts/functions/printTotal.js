@@ -1,6 +1,4 @@
-export function printTotal(productsInCart) {
-	const findPrice = (elem) => elem.price * Number(JSON.parse(localStorage.getItem("cart"))[elem.id][1])
-	const total  = productsInCart.reduce((acc, curr) => acc + findPrice(curr), 0);
+export function printTotal(total) {
 	  
 	  document.getElementById("total").innerHTML = `
 	<div class="cart-data">
