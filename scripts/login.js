@@ -1,20 +1,25 @@
-const loginIcon = document.getElementById("login");
-const logoutIcon = document.getElementById("logout");
-const cartIcon = document.getElementById("cart");
+const loginButton = document.getElementById("loginForm");
+const previousPage = sessionStorage.getItem("lastPage")
+const users = JSON.parse(localStorage.getItem("users"))
 
-const isOnline = () => localStorage.getItem("isOnline") == "true";
+loginButton.addEventListener("submit", (e) => {
+	e.preventDefault()
+	const form = new FormData(e.target)
+	const [email, pass] = [form.get("email"), form.get("password")]
+	if (users?.[email]){
+		const userData = users[email]
+		console.log("X");
+		if(userData.password === pass){
+			userData.islogged = true
+			users[email] = userData
+			localStorage.setItem("users", JSON.stringify(users))
+			localStorage.setItem("logged", email)
 
-if (isOnline()) {
-	[cartIcon, loginIcon, logoutIcon].forEach((element) =>
-		element.classList.toggle("hide")
-	);
-}
-
-[loginIcon, logoutIcon].forEach((element) => {
-	element.addEventListener("click", () => {
-		[cartIcon, loginIcon, logoutIcon].forEach((element) =>
-			element.classList.toggle("hide")
-		);
-		localStorage.setItem("isOnline", !isOnline());
-	});
-});
+			if (previousPage) {
+				location.href = `${previousPage}${sessionStorage.getItem("search")}`
+				return
+			}
+			location.pathname = previousPage ?? "/index.html"
+		}
+	}
+})

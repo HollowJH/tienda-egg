@@ -1,15 +1,17 @@
-import { findNewTotal } from "./findNewTotal.js";
+import { logged, users } from "../toggleLogin.js";
 import { printTotal } from "./printTotal.js";
 
-export function changeUnits(event) {
-	let cart = JSON.parse(localStorage.getItem("cart"));
+export function changeUnits(event, cart) {
 	const changedItem =
 		event.target.parentElement.parentElement.getElementsByClassName(
 			"product-title"
 		)[0].textContent.trim();
 	cart[changedItem] = [cart[changedItem][0], event.target.value];
-	const newTotal = findNewTotal()
+	const findPrice = (elem) => elem.price * Number(cart[elem.id][1])
+	let productsInCart = cart ? Object.keys(cart).map((e) => cart[e][0]) : [];
+	const newTotal = productsInCart.reduce((acc, curr) => acc + findPrice(curr), 0)
 	
-	localStorage.setItem("cart", JSON.stringify(cart));
 	printTotal(newTotal);
+	users[logged].cart = cart
+	localStorage.setItem("users", JSON.stringify(users))
 }

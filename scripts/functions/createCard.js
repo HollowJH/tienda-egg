@@ -2,7 +2,7 @@ import { favouriteCheck } from "./favouriteCheck.js"
 let paginaCargada = location.pathname.split("/")
 paginaCargada = paginaCargada[paginaCargada.length - 1]
 
-export function createCard(product) {
+export function createCard(product, cart) {
 	return `
        <div class="product-card">
           <a href="./details.html?id=${product.id}">
@@ -18,9 +18,9 @@ export function createCard(product) {
           </svg>` : ""}</span>
             <span class="product-description">${product.chosenColor ?? product.colors[0]}</span>
             ${paginaCargada == "cart.html" ? `<span class="product-description">${product.description}</span> 
-            <input type="number" min="1" value="${JSON.parse(localStorage.getItem("cart"))[product.id][1]}" class="product-input">
+            <input type="number" min="1" value="${cart[product.id][1]}" class="product-input">
           </div>
-          <div class="product-price" id="price">$${product.price * JSON.parse(localStorage.getItem("cart"))[product.id][1]}</div>` : `<div class="product-price-block">
+          <div class="product-price" id="price">$${product.price * cart[product.id][1]}</div>` : `<div class="product-price-block">
               <span class="product-price">${product.price}</span>
               <span class="product-discount">${product.onsale}</span>
             </div>

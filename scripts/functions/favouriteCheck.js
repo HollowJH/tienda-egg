@@ -1,6 +1,7 @@
+import { logged, users } from "../toggleLogin.js";
 export function favouriteCheck(item) {
-    const favoritos = localStorage.getItem("favoritos")
+    const favoritos = users?.[logged].favourites
     if (favoritos) {
-        return Boolean(JSON.parse(favoritos)[item], JSON.parse(favoritos))
+        return Object.keys(favoritos).includes(item)
     }
 }

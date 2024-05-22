@@ -1,4 +1,5 @@
 import { fetchProduct } from "../products.js";
+import { logged, users } from "../toggleLogin.js";
 
 export const Toast = Swal.mixin({
     toast: true,
@@ -22,20 +23,29 @@ const safeIsInCart = (currentCart, id) => {
 
 export async function addToCart() {
     const id = new URLSearchParams(location.search).get("id") ?? "Galaxy S24 Plus";
-    const currentCart = JSON.parse(localStorage.getItem("cart")) ?? {}
+    const currentCart = users?.[logged].cart
     const products = await fetchProduct()
     const producto = await products.find((elem) => elem.id == id)
+    const ammount = document.querySelector("input[type='number']").value
 
-    if (safeIsInCart(currentCart, id) != document.querySelector("input[type='number']").value) {
-        producto.chosenColor = document.getElementById("color").value
-        const added = { [producto.title]: [JSON.stringify(producto), document.querySelector("input[type='number']").value] }
-        localStorage.setItem("cart", JSON.stringify({ ...currentCart, ...added }));
-        
+    if (!logged) {
         Toast.fire({
-            icon: "success",
-            title: "Articulo añadido al carrito",
+            icon: "error",
+            title: "Inicia sesion para añadir al carrito",
             position: "bottom-end"
         })
+        return
+    }
+    if (currentCart?.[id]?.[1] !== ammount) {
+        Toast.fire({
+            icon: "success",
+            title: !currentCart?.[id]?.[1] ? "Articulo añadido al carrito" : "Carrito actualizado",
+            position: "bottom-end"
+        })
+        producto.chosenColor = document.getElementById("color").value
+        const added = { [producto.title]: [producto, document.querySelector("input[type='number']").value] }
+        users[logged].cart = { ...currentCart, ...added }
+        localStorage.setItem("users", JSON.stringify(users))
     } else {
         Toast.fire({
             icon: "warning",

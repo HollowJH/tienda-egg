@@ -221,3 +221,8 @@ footer {
 .swal2-toast.swal2-icon-success{
   background-color: #96ffb5 !important;
 }
+
+.swal2-toast.swal2-icon-error{
+  color: #FFF;
+  background-color: #861717 !important;
+}
